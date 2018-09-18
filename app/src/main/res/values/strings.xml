@@ -2,4 +2,6 @@
     <string name="app_name">NulpAndroid</string>
     <string name="input_your_name">Input your name</string>
     <string name="say_hello">Say hello!</string>
+    <string name="title_activity_main">Main</string>
+    <string name="title_activity_laba_1">Laba_1</string>
 </resources>
