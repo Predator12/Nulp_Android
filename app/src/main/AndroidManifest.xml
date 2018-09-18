@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Laba_2"
-            android:label="MainActivity"></activity>
+            android:label="MainActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
@@ -24,7 +24,11 @@
         </activity>
         <activity
             android:name=".Laba_1"
-            android:label="@string/title_activity_laba_1"></activity>
+            android:label="@string/title_activity_laba_1" />
+        <activity
+            android:name=".Laba_3"
+            android:label="@string/title_activity_laba_3"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

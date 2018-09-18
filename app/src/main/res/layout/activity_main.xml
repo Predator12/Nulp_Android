@@ -28,5 +28,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Laba 2" />
+
+        <Button
+            android:id="@+id/lab3"
+            android:onClick="lab3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Laba 3" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -24,4 +24,9 @@ public class MainActivity extends AppCompatActivity{
         Intent openLaba2 = new Intent(MainActivity.this, Laba_2.class);
         startActivity(openLaba2);
     }
+
+    public void lab3(View view) {
+        Intent openLaba1 = new Intent(MainActivity.this, Laba_3.class);
+        startActivity(openLaba1);
+    }
 }
