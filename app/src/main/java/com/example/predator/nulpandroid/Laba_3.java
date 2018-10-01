@@ -1,5 +1,8 @@
 package com.example.predator.nulpandroid;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,8 +17,15 @@ import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 public class Laba_3 extends AppCompatActivity {
 
     EditText firstName, lastName, email, phone, password, cnfpass;
-    Button submit;
+    Button submit, usersList;
     AwesomeValidation awesomeValidation;
+
+    String firstNameStr;
+    String lastNameStr;
+    String emailStr;
+    String phoneStr;
+    String passwordStr;
+    String confirmPasswordStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +43,7 @@ public class Laba_3 extends AppCompatActivity {
         password = findViewById(R.id.password);
         cnfpass = findViewById(R.id.cnfpass);
         submit = findViewById(R.id.submit);
+        usersList = findViewById(R.id.users_list);
 
         String regexPassword = "(?=.*[a-z])(?=.*[A-Z])(?=.*[\\d])(?=.*[~`!@#\\$%\\^&\\*\\(\\)\\-_\\+=\\{\\}\\[\\]\\|\\;:\"<>,./\\?]).{8,}";
         awesomeValidation.addValidation(Laba_3.this, R.id.firstName, "[a-zA-Z\\s]+", R.string.firstNameerr);
@@ -45,13 +56,47 @@ public class Laba_3 extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                firstNameStr = firstName.getText().toString();
+                lastNameStr = lastName.getText().toString();
+                emailStr = email.getText().toString();
+                phoneStr = phone.getText().toString();
+                passwordStr = password.getText().toString();
+                confirmPasswordStr = cnfpass.getText().toString();
                 if (awesomeValidation.validate()) {
                     Toast.makeText(Laba_3.this, "Data Received Succesfully", Toast.LENGTH_SHORT).show();
+                    saveAndCleanUserData();
                 } else {
                     Toast.makeText(Laba_3.this, "Error", Toast.LENGTH_SHORT).show();
                 }
 //                Toast.makeText(Laba_3.this, awesomeValidation.validate() ? "Data Received Succesfully" : "Error", Toast.LENGTH_SHORT).show();
             }
         });
+
+        usersList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent lab4Activity = new Intent(Laba_3.this, Laba_4.class);
+                startActivity(lab4Activity);
+            }
+    });
+    }
+
+    public void saveAndCleanUserData() {
+        SharedPreferences sharedPref = getSharedPreferences(Constants.USER_DATA_KEY,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(Constants.FIRST_NAME_KEY, firstNameStr);
+        editor.putString(Constants.LAST_NAME_KEY, lastNameStr);
+        editor.putString(Constants.PHONE_KEY, phoneStr);
+        editor.putString(Constants.EMAIL_KEY, emailStr);
+        editor.apply();
+        firstName.getText().clear();
+        lastName.getText().clear();
+        phone.getText().clear();
+        email.getText().clear();
+        password.getText().clear();
+        cnfpass.getText().clear();
     }
 }
+
+

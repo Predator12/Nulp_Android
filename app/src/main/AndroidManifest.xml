@@ -29,6 +29,8 @@
             android:name=".Laba_3"
             android:label="@string/title_activity_laba_3"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".Laba_4"></activity>
     </application>
 
 </manifest>
