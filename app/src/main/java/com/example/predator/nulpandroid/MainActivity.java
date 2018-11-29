@@ -1,32 +1,48 @@
 package com.example.predator.nulpandroid;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment = null;
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    fragment = new HomeFragment();
+                    break;
+            }
+            return loadFragment(fragment);
+
+        }
+    };
+
+    public boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    public void lab1(View view) {
-        Intent openLaba1 = new Intent(MainActivity.this, Laba_1.class);
-        startActivity(openLaba1);
-    }
-
-    public void lab2(View view) {
-        Intent openLaba2 = new Intent(MainActivity.this, Laba_2.class);
-        startActivity(openLaba2);
-    }
-
-    public void lab3(View view) {
-        Intent openLaba1 = new Intent(MainActivity.this, Laba_3.class);
-        startActivity(openLaba1);
-    }
 }
