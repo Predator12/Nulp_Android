@@ -11,4 +11,11 @@
     <string name="phoneerr">Enter correct phone</string>
     <string name="passworderr">Enter password</string>
     <string name="cnfpasserr">Enter Confirm password</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="name">Name</string>
+    <string name="species">Species</string>
+    <string name="created">Created</string>
 </resources>
