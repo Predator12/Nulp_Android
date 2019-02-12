@@ -23,7 +23,7 @@ deploy:
 
 before_script:
   - echo yes | sdkmanager "build-tools;27.0.3"
-  - cd MobileDevelopmentMVP
+  - cd Nulp_Android
   - chmod +x gradlew
 
 script: 
